@@ -3,11 +3,22 @@ using UnityEngine;
 public class ChudScript : MonoBehaviour
 {
     public float speed = 5f;
+    void Start()
+    {
+        
+    }
     void Update()
     {
-        float temp = transform.eulerAngles.z;
-        transform.Rotate(speed * temp * Time.deltaTime, 0, 0);
-        //transform.eulerAngles = new Vector3(speed * Time.deltaTime, 0, 0);
-        //Quaternion.Euler(speed * Time.deltaTime, 0, 0);
+        Vector3 rotationPosition = transform.eulerAngles;
+        rotationPosition.z += speed * Time.deltaTime;
+        transform.eulerAngles = rotationPosition;
+    }
+    public void setSpin(float speedOfSpin)
+    {
+        speed = speedOfSpin;
+    }
+    public void StopSpin(float speedOfSpin)
+    {
+        speed = speedOfSpin;
     }
 }
