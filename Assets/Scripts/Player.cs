@@ -4,6 +4,9 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     float speed = 5f;
+    bool isNearNpc = false;
+    public Transform NonPlayerCharacter;
+    public GameObject Board;
     void Start()
     {
         
@@ -11,6 +14,28 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        Vector3 position = transform.position;
+        Vector3 npcPosition = NonPlayerCharacter.transform.position;
+
+        if(position.x > npcPosition.x - 1f && position.x < npcPosition.x + 1f &&
+           position.y > npcPosition.y - 1f && position.y < npcPosition.y + 1f)
+        {
+            isNearNpc = true;
+        }
+        else
+        {
+            isNearNpc = false;
+        }
+        if(isNearNpc)
+        {
+            Board.SetActive(true);
+        }
+        else
+        {
+            Board.SetActive(false);
+        }
+
+
         bool leftPressed = Keyboard.current.aKey.isPressed;
         bool rightPressed = Keyboard.current.dKey.isPressed;
         bool upPressed = Keyboard.current.wKey.isPressed;
