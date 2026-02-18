@@ -6,8 +6,7 @@ public class ScriptToSpawn : MonoBehaviour
    public GameObject spawnBearPart;
    float bearPartsSpawned;
 
-   private List<GameObject> spawnedParts = new List<GameObject>();
-
+    private List<GameObject> spawnedParts = new List<GameObject>();
 
     void Start()
     {
