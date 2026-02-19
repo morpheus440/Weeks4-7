@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class BearPart : MonoBehaviour
 {
-    SpriteRenderer mySpriteRenderer;
+
     public float smallSize;
     public float largeSize;
     public Color darkColour;
@@ -14,7 +14,7 @@ public class BearPart : MonoBehaviour
 
     void Start()
     {
-        
+        SetXPos(0);
     }
 
     void Update()
@@ -26,18 +26,20 @@ public class BearPart : MonoBehaviour
 
     public void setTransform(float temp)
     {
-        transformValue = temp;
+        transformValue = -temp * 10 + 5;
     }
 
-    public void SetColor(bool colorChoice)
+    public void SetColor(bool colorChoice, GameObject temp)
     {
-        if(colorChoice == true)
+        if (colorChoice == true)
         {
-            mySpriteRenderer.color = darkColour;
+            SpriteRenderer spawnedRenderer = temp.GetComponent<SpriteRenderer>();
+            spawnedRenderer.color = darkColour;
         }
-        else
+        if(colorChoice == false)
         {
-            mySpriteRenderer.color = lightColour;
+            SpriteRenderer spawnedRenderer = temp.GetComponent<SpriteRenderer>();
+            spawnedRenderer.color = darkColour;
         }
     }
 
@@ -47,11 +49,20 @@ public class BearPart : MonoBehaviour
         {
             transform.localScale = new Vector3(smallSize, smallSize, 1);
         }
-        else
+        if(bigOrSmall == false)
         {
             transform.localScale = new Vector3(largeSize, largeSize, 1);
         }
     }
+
+    public void SetXPos(float xPos)
+    {
+        Vector3 position = transform.position;
+        position.x = xPos;
+        transform.position = position;
+    }
+    
+
 }
 
 
