@@ -10,11 +10,12 @@ public class BearPart : MonoBehaviour
     public float largeSize;
     public Color darkColour;
     public Color lightColour;
+    public Color black;
     public float transformValue;
 
     void Start()
     {
-        SetXPos(0);
+        //SetXPos(0);
     }
 
     void Update()
@@ -29,29 +30,62 @@ public class BearPart : MonoBehaviour
         transformValue = -temp * 10 + 5;
     }
 
-    public void SetColor(bool colorChoice, GameObject temp)
+    public void SetColor(float colorChoice, GameObject temp)
     {
-        if (colorChoice == true)
+        if (colorChoice == 1)
         {
             SpriteRenderer spawnedRenderer = temp.GetComponent<SpriteRenderer>();
             spawnedRenderer.color = darkColour;
         }
-        if(colorChoice == false)
+        if(colorChoice == 2)
         {
             SpriteRenderer spawnedRenderer = temp.GetComponent<SpriteRenderer>();
-            spawnedRenderer.color = darkColour;
+            spawnedRenderer.color = lightColour;
+        }
+        if (colorChoice == 3)
+        {
+            SpriteRenderer spawnedRenderer = temp.GetComponent<SpriteRenderer>();
+            spawnedRenderer.color = black;
         }
     }
 
-    public void SetSize(bool bigOrSmall)
+    public void SetSize(float bigOrSmall, GameObject temp)
     {
-        if(bigOrSmall == true)
+        if(bigOrSmall == 1)
         {
             transform.localScale = new Vector3(smallSize, smallSize, 1);
         }
-        if(bigOrSmall == false)
+        if (bigOrSmall == 2)
+        {
+            transform.localScale = new Vector3(smallSize+0.25f, smallSize+ 0.25f, 1);
+        }
+        if (bigOrSmall == 3)
         {
             transform.localScale = new Vector3(largeSize, largeSize, 1);
+        }
+        if (bigOrSmall == 4)
+        {
+            transform.localScale = new Vector3(largeSize+ 0.5f, largeSize+ 0.5f, 1);
+        }
+        if (bigOrSmall == 5)
+        {
+            transform.localScale = new Vector3(largeSize + 1.25f, largeSize + 1.25f, 1);
+        }
+        if (bigOrSmall == 6)
+        {
+            transform.localScale = new Vector3(largeSize + 1.75f, largeSize + 2.25f, 1);
+        }
+        if (bigOrSmall == 7)
+        {
+            transform.localScale = new Vector3(largeSize, largeSize, 1);
+        }
+        if (bigOrSmall == 8)
+        {
+            transform.localScale = new Vector3(largeSize, largeSize + 0.25f, 1);
+        }
+        if (bigOrSmall == 9)
+        {
+            transform.localScale = new Vector3(smallSize - 1f, smallSize - 1f, 1);
         }
     }
 

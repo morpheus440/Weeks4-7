@@ -101,7 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smallSize: 1.5
-  largeSize: 3
-  darkColour: {r: 0.6037736, g: 0.38934717, b: 0.10537558, a: 1}
-  lightColour: {r: 0.7735849, g: 0.53812474, b: 0.22988607, a: 1}
-  transformValue: 1
+  largeSize: 2
+  darkColour: {r: 0.509434, g: 0.30858558, b: 0.045656808, a: 1}
+  lightColour: {r: 0.8113208, g: 0.6000047, b: 0.32529372, a: 1}
+  black: {r: 0, g: 0, b: 0, a: 1}
+  transformValue: 0.47599816
