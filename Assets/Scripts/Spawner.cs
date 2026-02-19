@@ -9,7 +9,6 @@ public class Spawner : MonoBehaviour
     public Color pacerColour;
 
     private float waitProgress = 0f;
-    private float destroyProgress = 0f;
     public float pacerSpeed;
 
     public 

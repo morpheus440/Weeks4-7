@@ -6,7 +6,7 @@ public class ScriptToSpawn : MonoBehaviour
 {
     public GameObject spawnBearPart;
     public BearPart bearPartScript;
-    //public Slider movmentSlider;
+    public GameObject destroyThis;
     float xCordinate = - 1.5f;
     float colour = 1;
     float size = 2;
@@ -19,7 +19,7 @@ public class ScriptToSpawn : MonoBehaviour
     
     void Start()
     {
-        //movmentSlider.value = 0.5f;//sets slider to half. strangly doesn't let me attach the slider(and hence doesnt work)
+
         text2.text = "Build a bear by following the instructions and adjusting the sliders to fit the bear part. You have 10 seconds to build each part, so be quick!";
         text.text = "Left ear";
         spawnBearPartMethod();
@@ -27,13 +27,12 @@ public class ScriptToSpawn : MonoBehaviour
     
     void Update()
     {
-        timer += Time.deltaTime;
+        timer += Time.deltaTime;  //timer to keep track of how long the player has been building the current bear part
 
-        if(timer >= 10f)
+        if (timer >= 30f)
         {
-            Destroy(bearPartScript.gameObject);
-            spawnBearPartMethod();
-            timer = 0f;
+            Destroy(destroyThis.gameObject);//destroys the current bear part
+            text2.text = "you ran out of time, you made a usless chud bear :(";
         }
         switch (counter)
         {
@@ -98,22 +97,27 @@ public class ScriptToSpawn : MonoBehaviour
         }
     }
 
-    public void setTransform(float temp)
+    public void setTransform(float temp)//sets the transform value of the bear part
     {
         bearPartScript.setTransform(temp);
     }
 
     public void spawnBearPartMethod()
     {
+        if(counter>= 18)
+        {
+            text2.text = "You built a bear! Congrats! You can keep it as a pet or you can destroy it and start again.";
+            return;
+        }
         partOrder();
         Vector3 spawnPosition = new Vector3(xCordinate, 1, 0);
-        GameObject newBearPart = Instantiate(spawnBearPart, spawnPosition, Quaternion.identity);
+        GameObject newBearPart = Instantiate(spawnBearPart, spawnPosition, Quaternion.identity);// makes new prefab for bear part
         bearPartScript = newBearPart.GetComponent<BearPart>();
-        bearPartScript.SetColor(colour, newBearPart);
-        bearPartScript.SetSize(size, newBearPart);
+        bearPartScript.SetColor(colour, newBearPart);//set color of bear part
+        bearPartScript.SetSize(size, newBearPart);//set size of bear part
         if (timer >= 6f && timer <= 7f)//unlucky people dont get to build a bear
         {
-            Destroy(newBearPart, 5f);
+            Destroy(newBearPart, 5f);//destroys the current bear part
         }
         timer = 0f;
         counter++;
@@ -206,4 +210,5 @@ public class ScriptToSpawn : MonoBehaviour
             size = 9;
         }
     }
+
 }
