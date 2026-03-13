@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ContactSensor : MonoBehaviour
+public class cactusScript : MonoBehaviour
 {
     public GameObject player;
     public EventDrivenLara playerThing;
